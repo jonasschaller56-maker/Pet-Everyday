@@ -1,0 +1,317 @@
+
+
+<!DOCTYPE html>
+
+<html lang="de">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Pet & Everyday | Premium Pet Essentials</title>
+
+<meta name="description" content="Entdecke ausgewähltes Haustierzubehör für dich und deinen Vierbeiner.">
+
+<style>
+
+*{box-sizing:border-box}
+
+body{margin:0;background:#f7f4ee;color:#292720;font-family:Arial,sans-serif}
+
+header{height:76px;padding:0 7%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #e6dfd4}
+
+.logo{font-family:Georgia,serif;font-size:21px;letter-spacing:1.5px}
+
+.logo span{font-style:italic}
+
+button,a{cursor:pointer}
+
+.cart{background:#292720;color:white;border:0;padding:12px 18px}
+
+.hero{padding:65px 8%;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+
+.tag{font-size:11px;letter-spacing:3px;color:#96836c}
+
+h1{font:normal clamp(43px,6vw,70px)/1.1 Georgia,serif;margin:22px 0}
+
+h1 em{color:#a48b6c}
+
+.hero p{color:#777266;line-height:1.8;max-width:400px}
+
+.hero img{width:100%;height:390px;object-fit:cover;background:#e9e0d3}
+
+.cta{display:inline-block;margin-top:18px;background:#292720;color:white;text-decoration:none;padding:16px 23px;font-size:12px;letter-spacing:1px}
+
+.benefits{background:#eae2d6;padding:22px 5%;display:flex;justify-content:space-around;gap:15px;flex-wrap:wrap;font-size:11px;letter-spacing:1px}
+
+section{padding:65px 7%}
+
+.heading{text-align:center;margin-bottom:35px}
+
+.heading h2,.about h2{font:normal 38px Georgia,serif}
+
+.heading p{font-size:13px;color:#777}
+
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+
+.product{background:#fffdf9;padding:12px}
+
+.product .photo{height:190px;background:#e9e0d3;display:flex;align-items:center;justify-content:center;font-size:65px}
+
+.product h3{font:normal 21px Georgia,serif;margin:17px 0 7px}
+
+.product p{font-size:12px;color:#777}
+
+.price{margin:15px 0;font-weight:bold}
+
+.add{width:100%;padding:13px;background:transparent;border:1px solid #292720}
+
+.add:hover{background:#292720;color:white}
+
+.about{text-align:center;background:#eae2d6;padding:65px 10%}
+
+.about p{max-width:600px;margin:auto;color:#665f55;line-height:1.9;font-size:14px}
+
+footer{background:#292720;color:white;padding:30px 7%;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;font-size:12px}
+
+#cartPanel{display:none;position:fixed;inset:0;background:#0008;z-index:10}
+
+#cartPanel.open{display:block}
+
+.drawer{position:absolute;right:0;top:0;width:min(390px,100%);height:100%;background:#f7f4ee;padding:25px;overflow:auto}
+
+.drawerHead{display:flex;justify-content:space-between;align-items:center}
+
+.drawer h2{font:28px Georgia,serif}
+
+.close{border:0;background:none;font-size:26px}
+
+.cartItem{padding:15px 0;border-bottom:1px solid #ddd;font-size:14px}
+
+.cartItem button{margin:8px 5px 0 0;padding:5px 10px}
+
+.total{display:flex;justify-content:space-between;padding:20px 0;font-weight:bold}
+
+.note{font-size:11px;line-height:1.6;color:#777}
+
+@media(max-width:650px){
+
+ .hero{grid-template-columns:1fr;padding:45px 7%}
+
+ .hero img{height:280px}
+
+ .products{grid-template-columns:1fr 1fr;gap:12px}
+
+ .product .photo{height:145px}
+
+ section{padding:48px 5%}
+
+}
+
+@media(max-width:390px){.products{grid-template-columns:1fr}}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+ <div class="logo">PET <span>&</span> EVERYDAY</div>
+
+ <button class="cart" onclick="showCart()">WARENKORB (<span id="count">0</span>)</button>
+
+</header>
+
+<main>
+
+ <div class="hero">
+
+  <div>
+
+   <div class="tag">PREMIUM PET ESSENTIALS</div>
+
+   <h1>Für die Liebe,<br>die <em>Pfoten</em><br>hinterlassen.</h1>
+
+   <p>Besondere Alltagsbegleiter für dich und deinen Vierbeiner. Entdecke unsere Ideen für ein schöneres Zusammenleben.</p>
+
+   <a class="cta" href="#shop">KOLLEKTION ENTDECKEN</a>
+
+  </div>
+
+  <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?w=900" alt="Golden Retriever">
+
+ </div>
+
+ <div class="benefits">
+
+  <span>✦ MIT LIEBE AUSGEWÄHLT</span>
+
+  <span>✦ ZEITLOSES DESIGN</span>
+
+  <span>✦ FÜR DEINEN VIERBEINER</span>
+
+ </div>
+
+ <section id="shop">
+
+  <div class="heading">
+
+   <div class="tag">THE COLLECTION</div>
+
+   <h2>Unsere Favoriten</h2>
+
+   <p>Praktische Ideen für jeden gemeinsamen Tag.</p>
+
+  </div>
+
+  <div class="products" id="products"></div>
+
+ </section>
+
+ <div class="about">
+
+  <div class="tag">OUR PHILOSOPHY</div>
+
+  <h2>Everyday moments.</h2>
+
+  <p>Die schönsten Momente sind oft die kleinen. Pet & Everyday steht für ausgewählte Produkte, zeitloses Design und die besondere Verbindung zwischen Mensch und Tier.</p>
+
+ </div>
+
+</main>
+
+<footer>
+
+ <div class="logo">PET <span>&</span> EVERYDAY</div>
+
+ <div>© 2026 PET & EVERYDAY</div>
+
+</footer>
+
+<div id="cartPanel" onclick="hideCart(event)">
+
+ <div class="drawer" onclick="event.stopPropagation()">
+
+  <div class="drawerHead">
+
+   <h2>Dein Warenkorb</h2>
+
+   <button class="close" onclick="hideCart()">×</button>
+
+  </div>
+
+  <div id="items">Dein Warenkorb ist leer.</div>
+
+  <div class="total"><span>Zwischensumme</span><span id="total">0,00 €</span></div>
+
+  <p class="note">Shop-Demo: Es werden noch keine echten Bestellungen oder Zahlungen verarbeitet.</p>
+
+ </div>
+
+</div>
+
+<script>
+
+const products=[
+
+ {id:1,name:"Paw Bag",desc:"Kotbeutelspender für unterwegs",price:14.90,emoji:"🐾"},
+
+ {id:2,name:"Daily Treat Bag",desc:"Leckerlibeutel für Spaziergänge",price:24.90,emoji:"🦮"},
+
+ {id:3,name:"Travel Bowl",desc:"Praktischer Reisenapf",price:17.90,emoji:"🐶"}
+
+];
+
+let cart=[];
+
+const money=n=>n.toLocaleString("de-DE",{style:"currency",currency:"EUR"});
+
+document.getElementById("products").innerHTML=products.map(p=>`
+
+ <article class="product">
+
+  <div class="photo">${p.emoji}</div>
+
+  <h3>${p.name}</h3>
+
+  <p>${p.desc}</p>
+
+  <div class="price">${money(p.price)}</div>
+
+  <button class="add" onclick="add(${p.id})">IN DEN WARENKORB</button>
+
+ </article>`).join("");
+
+function add(id){
+
+ const item=cart.find(x=>x.id===id);
+
+ if(item)item.qty++;
+
+ else cart.push({...products.find(x=>x.id===id),qty:1});
+
+ render();
+
+ showCart();
+
+}
+
+function change(id,amount){
+
+ const item=cart.find(x=>x.id===id);
+
+ if(!item)return;
+
+ item.qty+=amount;
+
+ cart=cart.filter(x=>x.qty>0);
+
+ render();
+
+}
+
+function render(){
+
+ const count=cart.reduce((s,x)=>s+x.qty,0);
+
+ const total=cart.reduce((s,x)=>s+x.qty*x.price,0);
+
+ document.getElementById("count").textContent=count;
+
+ document.getElementById("total").textContent=money(total);
+
+ document.getElementById("items").innerHTML=cart.length?
+
+ cart.map(x=>`<div class="cartItem"><strong>${x.name}</strong><br>${money(x.price)}<br>
+
+ <button onclick="change(${x.id},-1)">−</button>
+
+ ${x.qty}
+
+ <button onclick="change(${x.id},1)">+</button></div>`).join("")
+
+ :"Dein Warenkorb ist leer.";
+
+}
+
+function showCart(){document.getElementById("cartPanel").classList.add("open")}
+
+function hideCart(event){
+
+ if(event&&event.target!==document.getElementById("cartPanel"))return;
+
+ document.getElementById("cartPanel").classList.remove("open");
+
+}
+
+render();
+
+</script>
+
+</body>
+
+</html>
